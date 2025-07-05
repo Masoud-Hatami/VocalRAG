@@ -1,4 +1,5 @@
 import re
+import warnings
 from dotenv import load_dotenv
 import streamlit as st
 import whisper
@@ -9,6 +10,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os 
 # Initialize session state for vector store
+warnings.filterwarnings("ignore", message="FP16 is not supported on CPU; using FP32 instead")
 if 'vector_store' not in st.session_state:
     st.session_state.vector_store = None
 
